@@ -1,0 +1,472 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global CSS matching Flutter theme exactly */
+:root {
+  /* Color System - Exact Flutter colors */
+  --color-primary: #2563EB;
+  --color-secondary: #64748B;
+  --color-tertiary: #0F172A;
+  --color-surface: #FFFFFF;
+  --color-background: #FAFAFA;
+  --color-error: #DC2626;
+  --color-success: #059669;
+  --color-warning: #D97706;
+  
+  /* Text Colors */
+  --color-on-primary: #FFFFFF;
+  --color-on-secondary: #FFFFFF;
+  --color-on-surface: #1E293B;
+  --color-on-background: #1E293B;
+  
+  /* Slate Scale */
+  --slate-50: #F8FAFC;
+  --slate-100: #F1F5F9;
+  --slate-200: #E2E8F0;
+  --slate-300: #CBD5E1;
+  --slate-400: #94A3B8;
+  --slate-500: #64748B;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1E293B;
+  --slate-900: #0F172A;
+  
+  /* Spacing System */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Classes - Matching Flutter TextTheme */
+.display-large {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  color: var(--slate-900);
+}
+
+.display-medium {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  line-height: 1.25;
+  color: var(--slate-800);
+}
+
+.headline-large {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  line-height: 1.3;
+  color: var(--slate-800);
+}
+
+.headline-medium {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--slate-900);
+}
+
+.headline-small {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-on-primary);
+}
+
+.title-large {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--slate-700);
+}
+
+.title-medium {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--slate-600);
+}
+
+.title-small {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--slate-500);
+}
+
+.body-large {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--slate-700);
+}
+
+.body-medium {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--slate-600);
+}
+
+.body-small {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--slate-500);
+}
+
+.label-large {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  color: var(--slate-700);
+}
+
+.label-medium {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  color: var(--slate-600);
+}
+
+/* Button Components - Matching Flutter Button Themes */
+.btn-primary {
+  @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-lg;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  border: none;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: #1D4ED8;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-lg;
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-secondary:hover {
+  background-color: var(--slate-50);
+  transform: translateY(-1px);
+}
+
+.btn-text {
+  @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium;
+  background-color: transparent;
+  color: var(--color-primary);
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-text:hover {
+  background-color: var(--slate-50);
+}
+
+/* Card Component - Matching Flutter CardTheme */
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--slate-200);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.card-elevated {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Input Component - Matching Flutter InputDecorationTheme */
+.input-field {
+  @apply w-full px-4 py-3 text-sm border rounded-lg;
+  background-color: var(--color-surface);
+  border-color: var(--slate-200);
+  color: var(--slate-800);
+  transition: all 0.2s ease-in-out;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  border-width: 2px;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.input-field::placeholder {
+  color: var(--slate-400);
+}
+
+.input-field.error {
+  border-color: var(--color-error);
+}
+
+/* Chip Component - Matching Flutter ChipTheme */
+.chip {
+  @apply inline-flex items-center px-3 py-1 text-xs font-medium rounded-md;
+  background-color: var(--slate-100);
+  color: var(--slate-600);
+}
+
+.chip-primary {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: var(--color-primary);
+}
+
+.chip-success {
+  background-color: rgba(5, 150, 105, 0.1);
+  color: var(--color-success);
+}
+
+.chip-warning {
+  background-color: rgba(217, 119, 6, 0.1);
+  color: var(--color-warning);
+}
+
+.chip-error {
+  background-color: rgba(220, 38, 38, 0.1);
+  color: var(--color-error);
+}
+
+/* Navigation */
+.nav-item {
+  @apply flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200;
+  color: var(--slate-600);
+}
+
+.nav-item:hover {
+  background-color: var(--slate-50);
+  color: var(--slate-800);
+}
+
+.nav-item.active {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: var(--color-primary);
+}
+
+/* Loading States */
+.loading-spinner {
+  @apply animate-spin rounded-full border-2 border-slate-200;
+  border-top-color: var(--color-primary);
+}
+
+/* Alert Components */
+.alert {
+  @apply p-4 rounded-lg border;
+}
+
+.alert-error {
+  background-color: rgba(220, 38, 38, 0.1);
+  border-color: var(--color-error);
+  color: #991B1B;
+}
+
+.alert-success {
+  background-color: rgba(5, 150, 105, 0.1);
+  border-color: var(--color-success);
+  color: #065F46;
+}
+
+.alert-warning {
+  background-color: rgba(217, 119, 6, 0.1);
+  border-color: var(--color-warning);
+  color: #92400E;
+}
+
+/* Layout Utilities */
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.page-header {
+  @apply mb-8;
+}
+
+.section-spacing {
+  @apply space-y-6;
+}
+
+/* Responsive Grid */
+.grid-responsive {
+  @apply grid gap-6;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes slideInFromLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.slide-in-left {
+  animation: slideInFromLeft 0.3s ease-out;
+}
+
+@keyframes slideInFromRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.slide-in-right {
+  animation: slideInFromRight 0.3s ease-out;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--slate-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--slate-300);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--slate-400);
+}
+
+/* Focus Styles */
+.focus-ring:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Status Indicators */
+.status-online {
+  @apply w-3 h-3 bg-green-400 rounded-full;
+}
+
+.status-offline {
+  @apply w-3 h-3 bg-slate-400 rounded-full;
+}
+
+.status-busy {
+  @apply w-3 h-3 bg-red-400 rounded-full;
+}
+
+/* Divider */
+.divider {
+  @apply border-0 h-px bg-slate-200;
+}
+
+/* Form Validation */
+.form-error {
+  @apply text-sm text-red-600 mt-1;
+}
+
+.form-success {
+  @apply text-sm text-green-600 mt-1;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50;
+}
+
+/* Modal Backdrop */
+.modal-backdrop {
+  @apply fixed inset-0 bg-black bg-opacity-50 z-40;
+}
+
+/* Sidebar Transition */
+.sidebar-enter {
+  transform: translateX(-100%);
+}
+
+.sidebar-enter-active {
+  transform: translateX(0);
+  transition: transform 300ms ease-in-out;
+}
+
+.sidebar-exit {
+  transform: translateX(0);
+}
+
+.sidebar-exit-active {
+  transform: translateX(-100%);
+  transition: transform 300ms ease-in-out;
+}
+
+/* Responsive Design Utilities */
+@media (max-width: 768px) {
+  .display-large { font-size: 28px; }
+  .display-medium { font-size: 24px; }
+  .headline-large { font-size: 20px; }
+  .headline-medium { font-size: 18px; }
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
