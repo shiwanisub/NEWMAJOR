@@ -165,7 +165,7 @@ const WelcomeScreen = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-purple-600/5" />
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -311,15 +311,13 @@ const WelcomeScreen = () => {
 
           <div className="grid md:grid-cols-3 gap-12">
             {howItWorks.map((item, index) => (
-              <div key={index} className="text-center group relative">
+              <div key={index} className="text-center group">
                 <div className="relative mb-8">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 relative z-10">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <span className="text-white font-bold text-lg">{item.step}</span>
                   </div>
                   {index < howItWorks.length - 1 && (
-                    <div className="hidden md:block absolute top-8 left-full transform -translate-y-1/2 w-20 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 z-0">
-                      <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-0 h-0 border-l-6 border-l-blue-600 border-t-3 border-t-transparent border-b-3 border-b-transparent"></div>
-                    </div>
+                    <div className="hidden md:block absolute top-8 left-20 w-32 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600" />
                   )}
                 </div>
                 <h3 className="text-xl font-semibold text-slate-900 mb-4">{item.title}</h3>

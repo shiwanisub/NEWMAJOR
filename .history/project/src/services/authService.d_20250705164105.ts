@@ -7,7 +7,6 @@ export interface UserData {
   username: string;
   email: string;
   password: string;
-  confirmPassword: string;
   role: string;
   firstName?: string;
   lastName?: string;
@@ -19,12 +18,6 @@ export interface AuthResponse {
   user: any;
 }
 
-export interface SignupResponse {
-  success: boolean;
-  message: string;
-  email: string;
-}
-
 export interface CurrentUser {
   token: string;
   user: any;
@@ -32,12 +25,8 @@ export interface CurrentUser {
 
 export const authService: {
   login: (credentials: AuthCredentials) => Promise<AuthResponse>;
-  signup: (userData: UserData) => Promise<SignupResponse>;
-  logout: () => Promise<void>;
+  signup: (userData: UserData) => Promise<AuthResponse>;
+  logout: () => void;
   getCurrentUser: () => CurrentUser | null;
   verifyToken: () => Promise<any>;
-  verifyEmail: (token: string) => Promise<any>;
-  resendVerification: (email: string) => Promise<any>;
-  forgotPassword: (email: string) => Promise<any>;
-  resetPassword: (token: string, password: string, confirmPassword: string) => Promise<any>;
 }; 

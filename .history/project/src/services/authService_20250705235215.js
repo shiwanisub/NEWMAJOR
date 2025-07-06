@@ -13,27 +13,7 @@ export const authService = {
       
       return { token: tokens.accessToken, user };
     } catch (error) {
-      // Handle specific backend error messages
-      let errorMessage = 'Login failed';
-      
-      if (error.response?.data) {
-        const { status, message } = error.response.data;
-        
-        switch (status) {
-          case 'EMAIL_NOT_VERIFIED':
-            errorMessage = 'Please verify your email address before logging in. Check your email for the verification link.';
-            break;
-          case 'INVALID_CREDENTIALS':
-            errorMessage = 'Invalid email or password. Please try again.';
-            break;
-          case 'ACCOUNT_ACCESS_DENIED':
-            errorMessage = 'Your account is not active. Please contact support.';
-            break;
-          default:
-            errorMessage = message || 'Login failed. Please try again.';
-        }
-      }
-      
+      const errorMessage = error.response?.data?.message || 'Login failed';
       throw new Error(errorMessage);
     }
   },

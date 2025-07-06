@@ -25,18 +25,13 @@ interface AuthContextType {
     username: string;
     email: string;
     password: string;
-    confirmPassword: string;
     role: string;
     firstName?: string;
     lastName?: string;
     phone?: string;
-  }) => Promise<{ success: boolean; message: string; email: string }>;
+  }) => Promise<void>;
   logout: () => void;
   refreshUser: () => Promise<void>;
-  verifyEmail: (token: string) => Promise<void>;
-  resendVerification: (email: string) => Promise<void>;
-  forgotPassword: (email: string) => Promise<void>;
-  resetPassword: (token: string, password: string, confirmPassword: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -103,7 +98,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
     username: string;
     email: string;
     password: string;
-    confirmPassword: string;
     role: string;
     firstName?: string;
     lastName?: string;
@@ -111,9 +105,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }) => {
     try {
       setLoading(true);
-      const result = await authService.signup(userData);
-      // Don't set user here since email verification is required
-      return result;
+      const { user: newUser } = await authService.signup(userData);
+      setUser(newUser);
     } catch (error) {
       throw error;
     } finally {
@@ -121,53 +114,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   };
 
-  const verifyEmail = async (token: string) => {
-    try {
-      setLoading(true);
-      await authService.verifyEmail(token);
-      // After email verification, user can login
-    } catch (error) {
-      throw error;
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const resendVerification = async (email: string) => {
-    try {
-      setLoading(true);
-      await authService.resendVerification(email);
-    } catch (error) {
-      throw error;
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const forgotPassword = async (email: string) => {
-    try {
-      setLoading(true);
-      await authService.forgotPassword(email);
-    } catch (error) {
-      throw error;
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const resetPassword = async (token: string, password: string, confirmPassword: string) => {
-    try {
-      setLoading(true);
-      await authService.resetPassword(token, password, confirmPassword);
-    } catch (error) {
-      throw error;
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const logout = async () => {
-    await authService.logout();
+  const logout = () => {
+    authService.logout();
     setUser(null);
   };
 
@@ -187,11 +135,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     login,
     signup,
     logout,
-    refreshUser,
-    verifyEmail,
-    resendVerification,
-    forgotPassword,
-    resetPassword
+    refreshUser
   };
 
   return (

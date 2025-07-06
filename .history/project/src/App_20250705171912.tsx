@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import LoginPage from './pages/auth/LoginPage';
 import SignupPage from './pages/auth/SignupPage';
 import EmailVerificationPage from './pages/auth/EmailVerificationPage';
-import AuthPage from './pages/auth/AuthPage';
 import RoleBasedDashboard from './components/RoleBasedDashboard';
 import ClientDashboard from './pages/client/ClientDashboard';
 import ServiceProviderDashboard from './pages/service_provider/service_provider_dashboard';
@@ -32,7 +31,6 @@ function AppRoutes() {
         <Navbar />
         <Routes>
           <Route path="/welcome" element={<WelcomeScreen />} />
-          <Route path="/auth" element={<AuthPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/verify-email" element={<EmailVerificationPage />} />

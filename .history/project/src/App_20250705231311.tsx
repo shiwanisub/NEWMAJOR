@@ -32,7 +32,6 @@ function AppRoutes() {
         <Navbar />
         <Routes>
           <Route path="/welcome" element={<WelcomeScreen />} />
-          <Route path="/auth" element={<AuthPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/verify-email" element={<EmailVerificationPage />} />

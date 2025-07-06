@@ -193,7 +193,7 @@ const SignupPage = () => {
               {success}
             </p>
             <p className="body-medium text-slate-600 mb-8">
-              Please check your email at <strong>{formData.email}</strong> and click the verification link to activate your account. You won't be able to log in until you verify your email.
+              Please check your email at <strong>{formData.email}</strong> and click the verification link to activate your account.
             </p>
             <Link
               to="/login"

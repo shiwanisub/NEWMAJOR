@@ -2,7 +2,7 @@ const http = require("http");
 const app = require("./src/config/express.config");
 
 const httpServer = http.createServer(app);
-const PORT = 9008;
+const PORT = 9009;
 const host = "0.0.0.0"; // Allows access from other devices on the same network
 
 httpServer.listen(PORT, host, (err) => {

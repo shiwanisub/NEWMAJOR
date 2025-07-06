@@ -32,7 +32,7 @@ const ClientDashboard = () => {
   const [logoutModal, setLogoutModal] = useState(false);
   const [logoutError, setLogoutError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [photographers, setPhotographers] = useState<any[]>([]);
+  const [photographers, setPhotographers] = useState([]);
   const [photographersLoading, setPhotographersLoading] = useState(false);
   const [photographersError, setPhotographersError] = useState('');
 

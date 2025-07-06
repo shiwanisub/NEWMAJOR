@@ -13,27 +13,7 @@ export const authService = {
       
       return { token: tokens.accessToken, user };
     } catch (error) {
-      // Handle specific backend error messages
-      let errorMessage = 'Login failed';
-      
-      if (error.response?.data) {
-        const { status, message } = error.response.data;
-        
-        switch (status) {
-          case 'EMAIL_NOT_VERIFIED':
-            errorMessage = 'Please verify your email address before logging in. Check your email for the verification link.';
-            break;
-          case 'INVALID_CREDENTIALS':
-            errorMessage = 'Invalid email or password. Please try again.';
-            break;
-          case 'ACCOUNT_ACCESS_DENIED':
-            errorMessage = 'Your account is not active. Please contact support.';
-            break;
-          default:
-            errorMessage = message || 'Login failed. Please try again.';
-        }
-      }
-      
+      const errorMessage = error.response?.data?.message || 'Login failed';
       throw new Error(errorMessage);
     }
   },
@@ -45,7 +25,7 @@ export const authService = {
       const backendData = {
         name: `${userData.firstName} ${userData.lastName}`.trim(),
         email: userData.email,
-        phone: userData.phone || '',
+        phone: userData.phone,
         password: userData.password,
         confirmPassword: userData.confirmPassword,
         userType: userData.role // Map role to userType
@@ -56,28 +36,11 @@ export const authService = {
       // Registration successful but user needs to verify email
       return { 
         success: true, 
-        message: response.data.message || 'Registration successful! Please check your email to verify your account.',
+        message: response.data.message,
         email: userData.email
       };
     } catch (error) {
-      // Handle specific backend error messages
-      let errorMessage = 'Registration failed';
-      
-      if (error.response?.data) {
-        const { status, message } = error.response.data;
-        
-        switch (status) {
-          case 'EMAIL_ALREADY_EXISTS':
-            errorMessage = 'This email address is already registered. Please use a different email or try logging in.';
-            break;
-          case 'VALIDATION_ERROR':
-            errorMessage = message || 'Please check your input and try again.';
-            break;
-          default:
-            errorMessage = message || 'Registration failed. Please try again.';
-        }
-      }
-      
+      const errorMessage = error.response?.data?.message || 'Registration failed';
       throw new Error(errorMessage);
     }
   },

@@ -86,10 +86,6 @@ const SignupPage = () => {
           setError('Please fill in all required personal information');
           return false;
         }
-        if (formData.phone && formData.phone.length < 10) {
-          setError('Phone number must be at least 10 digits');
-          return false;
-        }
         break;
       case 3:
         if (!formData.email || !formData.password || !formData.confirmPassword) {
@@ -100,8 +96,8 @@ const SignupPage = () => {
           setError('Passwords do not match');
           return false;
         }
-        if (passwordStrength < 80) {
-          setError('Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.');
+        if (passwordStrength < 50) {
+          setError('Password is too weak. Use at least 8 characters with mixed case, numbers, and special characters.');
           return false;
         }
         break;
@@ -166,16 +162,16 @@ const SignupPage = () => {
   };
 
   const getPasswordStrengthColor = () => {
-    if (passwordStrength < 40) return 'bg-red-500';
-    if (passwordStrength < 60) return 'bg-orange-500';
-    if (passwordStrength < 80) return 'bg-yellow-500';
+    if (passwordStrength < 25) return 'bg-red-500';
+    if (passwordStrength < 50) return 'bg-orange-500';
+    if (passwordStrength < 75) return 'bg-yellow-500';
     return 'bg-green-500';
   };
 
   const getPasswordStrengthText = () => {
-    if (passwordStrength < 40) return 'Weak';
-    if (passwordStrength < 60) return 'Fair';
-    if (passwordStrength < 80) return 'Good';
+    if (passwordStrength < 25) return 'Weak';
+    if (passwordStrength < 50) return 'Fair';
+    if (passwordStrength < 75) return 'Good';
     return 'Strong';
   };
 
@@ -193,7 +189,7 @@ const SignupPage = () => {
               {success}
             </p>
             <p className="body-medium text-slate-600 mb-8">
-              Please check your email at <strong>{formData.email}</strong> and click the verification link to activate your account. You won't be able to log in until you verify your email.
+              Please check your email at <strong>{formData.email}</strong> and click the verification link to activate your account.
             </p>
             <Link
               to="/login"

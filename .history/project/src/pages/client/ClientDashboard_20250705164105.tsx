@@ -32,7 +32,7 @@ const ClientDashboard = () => {
   const [logoutModal, setLogoutModal] = useState(false);
   const [logoutError, setLogoutError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [photographers, setPhotographers] = useState<any[]>([]);
+  const [photographers, setPhotographers] = useState([]);
   const [photographersLoading, setPhotographersLoading] = useState(false);
   const [photographersError, setPhotographersError] = useState('');
 
@@ -865,12 +865,12 @@ const ClientDashboard = () => {
       setPhotographersLoading(true);
       setPhotographersError('');
       photographerService
-        .searchPhotographers()
+        .searchPhotographers({ limit: 12 })
         .then((data) => {
           setPhotographers(data.photographers || []);
         })
         .catch((err) => {
-          setPhotographersError(err.message || 'Failed to load photographers');
+          setPhotographersError('Failed to load photographers.');
         })
         .finally(() => setPhotographersLoading(false));
     }
